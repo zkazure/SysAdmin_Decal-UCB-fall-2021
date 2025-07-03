@@ -1,0 +1,97 @@
+#+title: Lecture 01 Advanced Introduction to UNIX
+#+author: Kazure Zheng
+* Agenda
+
+1. The Shell
+2. Unix
+3. FOSS
+
+* The Shell
+
+** command
+- ~ls~: list
+- ~pwd~: Present Working Directory
+- ~cd~: Change Directory
+- ~touch~
+- ~cat~
+- ~head~
+- ~man~
+- ~tail~
+- ~mv~
+- ~less~
+- ~grep~
+- ~|~
+- ~sed~
+  use regexp in ''
+- ~curl~: get the context of website. ~curl https://google.com > website.html~
+
+  
+** define a command
+
+$?
+
+func() {}
+
+&& 
+
+** shell script
+
+#+begin_src shell
+  #!/bin/bash
+  # fibonacci
+
+  if [ $# -eq 0 ]; then
+      ehco "needd parameters"
+      exit 1
+  fi
+
+  fib() {
+      N = "$1"
+
+      if [ -z "${N##*[!0-9]*}"]; then
+          echo "negative"
+          exit 1
+      fi
+      
+  }
+
+  fib "$1"
+#+end_src
+fi
+
+* History and Core Concepts
+:PROPERTIES:
+:ID:       f8a7891c-6034-4781-b352-d4d0959823a2
+:END:
+
+** History of UNIX
+
+#+DOWNLOADED: screenshot @ 2025-07-03 21:10:43
+[[file:img/2025-07-03_21-10-43_screenshot.png]]
+
+
+** ...
+
+** Unix Design Philosophy
+:PROPERTIES:
+:ID:       dda75de4-0d1d-4a46-9ff7-b5396cae3fe4
+:END:
+
+
+#+DOWNLOADED: screenshot @ 2025-07-03 21:15:03
+[[file:img/2025-07-03_21-15-03_screenshot.png]]
+
+
+** Free and Open Source Software(FOSS)
+:PROPERTIES:
+:ID:       7cbd39d7-9afa-4a5e-ac56-41fe95f8ff54
+:END:
+
+no obtain for free, but free to access the source code.
+
+
+#+DOWNLOADED: screenshot @ 2025-07-03 21:20:04
+[[file:img/2025-07-03_21-20-04_screenshot.png]]
+
+
+For example, MIT License, GNU Public license. 
