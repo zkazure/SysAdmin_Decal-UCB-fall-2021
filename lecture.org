@@ -1,14 +1,17 @@
-#+title: Lecture 01 Advanced Introduction to UNIX
-#+author: Kazure Zheng
-* Agenda
+#+title
+
+
+*  [[https://www.bilibili.com/video/BV1EJ4m1s7bG/?spm_id_from=333.1391.0.0&vd_source=c929e07d3af3e6861de93427e4190229][Lecture 01 Advanced Introduction to UNIX]]
+
+** Agenda
 
 1. The Shell
 2. Unix
 3. FOSS
 
-* The Shell
+** The Shell
 
-** command
+*** command
 - ~ls~: list
 - ~pwd~: Present Working Directory
 - ~cd~: Change Directory
@@ -26,7 +29,7 @@
 - ~curl~: get the context of website. ~curl https://google.com > website.html~
 
   
-** define a command
+*** define a command
 
 $?
 
@@ -34,7 +37,7 @@ func() {}
 
 && 
 
-** shell script
+*** shell script
 
 #+begin_src shell
   #!/bin/bash
@@ -59,20 +62,20 @@ func() {}
 #+end_src
 fi
 
-* History and Core Concepts
+** History and Core Concepts
 :PROPERTIES:
 :ID:       f8a7891c-6034-4781-b352-d4d0959823a2
 :END:
 
-** History of UNIX
+*** History of UNIX
 
 #+DOWNLOADED: screenshot @ 2025-07-03 21:10:43
 [[file:img/2025-07-03_21-10-43_screenshot.png]]
 
 
-** ...
+*** ...
 
-** Unix Design Philosophy
+*** Unix Design Philosophy
 :PROPERTIES:
 :ID:       dda75de4-0d1d-4a46-9ff7-b5396cae3fe4
 :END:
@@ -82,7 +85,7 @@ fi
 [[file:img/2025-07-03_21-15-03_screenshot.png]]
 
 
-** Free and Open Source Software(FOSS)
+*** Free and Open Source Software(FOSS)
 :PROPERTIES:
 :ID:       7cbd39d7-9afa-4a5e-ac56-41fe95f8ff54
 :END:
