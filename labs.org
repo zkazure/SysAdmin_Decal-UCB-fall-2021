@@ -1,0 +1,4 @@
+#+title: Labs
+#+author: Kazure Zheng
+
+[[file:labs/1/note.org][Labs 01]]

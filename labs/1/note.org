@@ -1,0 +1,239 @@
+* Part 1
+
+get from the website. 
+#+begin_src shell
+  wget https://github.com/0xcf/decal-labs/raw/master/b1/b01.tgz
+#+end_src
+
+#+RESULTS:
+
+how the tar work?
+
+#+begin_src shell
+  # extract
+  tar -zvxf b01.tgz
+
+
+
+#+end_src
+
+#+RESULTS:
+| b01/                          |
+| b01/hello_world               |
+| b01/nonsense/                 |
+| b01/a_script                  |
+| b01/big_data.txt              |
+| b01/.secret                   |
+| b01/nonsense/naming_is_hard09 |
+| b01/nonsense/naming_is_hard00 |
+| b01/nonsense/naming_is_hard07 |
+| b01/nonsense/naming_is_hard06 |
+| b01/nonsense/naming_is_hard01 |
+| b01/nonsense/naming_is_hard08 |
+| b01/nonsense/naming_is_hard12 |
+| b01/nonsense/naming_is_hard15 |
+| b01/nonsense/naming_is_hard14 |
+| b01/nonsense/naming_is_hard13 |
+| b01/nonsense/naming_is_hard04 |
+| b01/nonsense/naming_is_hard03 |
+| b01/nonsense/naming_is_hard02 |
+| b01/nonsense/naming_is_hard05 |
+| b01/nonsense/naming_is_hard16 |
+| b01/nonsense/naming_is_hard11 |
+| b01/nonsense/naming_is_hard18 |
+| b01/nonsense/naming_is_hard10 |
+| b01/nonsense/naming_is_hard17 |
+
+#+begin_src shell
+  # compression
+  tar -cvf test_tar_c.tar b01/
+  gzip test_gzip.tar.gz test_tar_c.tar
+#+end_src
+
+#+RESULTS:
+| b01/                          |
+| b01/nonsense/                 |
+| b01/nonsense/naming_is_hard11 |
+| b01/nonsense/naming_is_hard03 |
+| b01/nonsense/naming_is_hard16 |
+| b01/nonsense/naming_is_hard10 |
+| b01/nonsense/naming_is_hard09 |
+| b01/nonsense/naming_is_hard18 |
+| b01/nonsense/naming_is_hard12 |
+| b01/nonsense/naming_is_hard06 |
+| b01/nonsense/naming_is_hard14 |
+| b01/nonsense/naming_is_hard04 |
+| b01/nonsense/naming_is_hard00 |
+| b01/nonsense/naming_is_hard01 |
+| b01/nonsense/naming_is_hard15 |
+| b01/nonsense/naming_is_hard02 |
+| b01/nonsense/naming_is_hard17 |
+| b01/nonsense/naming_is_hard13 |
+| b01/nonsense/naming_is_hard05 |
+| b01/nonsense/naming_is_hard08 |
+| b01/nonsense/naming_is_hard07 |
+| b01/hello_world               |
+| b01/big_data.txt              |
+| b01/a_script                  |
+| b01/.secret                   |
+
+
+#+begin_src shell
+  tar -zcvf test_tar_z.tar.gz b01/
+#+end_src
+
+#+RESULTS:
+| b01/                          |
+| b01/nonsense/                 |
+| b01/nonsense/naming_is_hard11 |
+| b01/nonsense/naming_is_hard03 |
+| b01/nonsense/naming_is_hard16 |
+| b01/nonsense/naming_is_hard10 |
+| b01/nonsense/naming_is_hard09 |
+| b01/nonsense/naming_is_hard18 |
+| b01/nonsense/naming_is_hard12 |
+| b01/nonsense/naming_is_hard06 |
+| b01/nonsense/naming_is_hard14 |
+| b01/nonsense/naming_is_hard04 |
+| b01/nonsense/naming_is_hard00 |
+| b01/nonsense/naming_is_hard01 |
+| b01/nonsense/naming_is_hard15 |
+| b01/nonsense/naming_is_hard02 |
+| b01/nonsense/naming_is_hard17 |
+| b01/nonsense/naming_is_hard13 |
+| b01/nonsense/naming_is_hard05 |
+| b01/nonsense/naming_is_hard08 |
+| b01/nonsense/naming_is_hard07 |
+| b01/hello_world               |
+| b01/big_data.txt              |
+| b01/a_script                  |
+| b01/.secret                   |
+
+
+#+begin_src shell
+  ls -a # list everything
+#+end_src
+
+#+RESULTS:
+| .        |
+| ..       |
+| b01      |
+| b01.tgz  |
+| note.org |
+
+There is a hidden file in the directory, *hunter2*. 
+
+#+begin_src shell
+  cd b01/
+  rm -r nonsense # delete a directory
+#+end_src
+
+#+RESULTS:
+
+#+begin_src shell
+  cd b01/
+  cat big_data.txt | grep "https"
+#+end_src
+
+#+RESULTS:
+| ;=:P0viNjebvs<+^Ae.SZYG'F}\> https://xkcd.com/705 e[a3]vF;Ny | *rpyC?3OA$Nm<.iH8M |
+
+there is 3 permissions, Readable, Writable, eXecutable.
+
+#+begin_src shell
+  cd b01
+  ls -l # will list the permissions of the file
+  chmod +x a_script # give the x permissions
+
+#+end_src
+
+#+RESULTS:
+| total      | 78132 |        |        |          |     |    |      |              |
+| -rwxr-xr-x |     1 | kazure | kazure |       20 | Sep | 11 | 2019 | a_script     |
+| -rw-r--r-- |     1 | kazure | kazure | 80000080 | Sep | 12 | 2018 | big_data.txt |
+| -rw-r--r-- |     1 | kazure | kazure |        0 | Jan | 30 | 2018 | hello_world  |
+
+#+begin_src shell
+  cd b01/
+  chmod +x a_script
+  ls -l
+  ./a_script
+#+end_src
+
+#+RESULTS:
+| total      |  78132 |        |        |          |     |    |      |              |
+| -rwxr-xr-x |      1 | kazure | kazure |       20 | Sep | 11 | 2019 | a_script     |
+| -rw-r--r-- |      1 | kazure | kazure | 80000080 | Sep | 12 | 2018 | big_data.txt |
+| -rw-r--r-- |      1 | kazure | kazure |        0 | Jan | 30 | 2018 | hello_world  |
+| Hello      | World! |        |        |          |     |    |      |              |
+
+* Part 2
+
+** problem 4
+
+#+begin_src shell
+  cd b01/
+  ls -lhtr # List; Human readable; Time soted; Reverse.
+#+end_src
+
+#+RESULTS:
+| total      | 77M |        |        |     |     |    |      |              |
+| -rw-r--r-- |   1 | kazure | kazure |   0 | Jan | 30 | 2018 | hello_world  |
+| -rw-r--r-- |   1 | kazure | kazure | 77M | Sep | 12 | 2018 | big_data.txt |
+| -rwxr-xr-x |   1 | kazure | kazure |  20 | Sep | 11 | 2019 | a_script     |
+
+** problem 5
+
+#+begin_src shell
+  cd b01/
+  head -n 4 big_data.txt
+#+end_src
+
+#+RESULTS:
+| l2uuV7T@uws7:;eAf9A7A>nUB]r0:fhE80*fa5WCIJ<bd>xG>LBOy@FS#>?-RE1\_)pmIv9^%Qr>&jc |                                                               |       |
+| ->~QSqAoxUU                                                                     | pC{\y~Jxs~u_IgQ>y!aogH{E}+yJ;PE>Z*bVk{JF0y1^cT~#D~Q)[wk^UozkG | ,!XK7 |
+| TIr^%H7[[AS>Q<~=?~FpLM6C7LAXuolh0~:EX4^X6Pb(YS(]7'M+mPJ<HlMgT\eg`ygJ}<bqW-BBNku |                                                               |       |
+| .KW8NCq]/D"ABLTnL&fo-e,YaXt~,[.MiQ<>68kj*QHC\{7a':Jtvkb%i}f5J,lm]nXz`Qf;n)y~.KG |                                                               |       |
+
+
+** problem 6
+
+cat is a command to control the file rather than strings. 
+
+#+begin_src shell
+  cd tmp
+  rm out.txt
+  cat foo > out.txt
+  cat out.txt
+
+  echo ""
+  echo "it will no change"
+  cat foo > out.txt 
+  cat out.txt
+#+end_src
+
+#+RESULTS:
+| good |      |    |        |
+| it   | will | no | change |
+| good |      |    |        |
+
+#+begin_src shell
+  cd tmp
+  rm out.txt
+  cat foo >> out.txt
+  cat out.txt
+
+  echo ""
+  echo "it will change"
+  cat foo >> out.txt 
+  cat out.txt
+#+end_src
+
+#+RESULTS:
+| good     |      |        |
+| it       | will | change |
+| goodgood |      |        |
+
+* Part 3 Obtaining your VM
+
+use Linux local system instead. 
