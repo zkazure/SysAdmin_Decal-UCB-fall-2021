@@ -1,5 +1,6 @@
-#+title
-
+#+title: Sysadmin Decal-UCB
+#+author: Kazure Zheng
+#+startup: overview
 
 *  [[https://www.bilibili.com/video/BV1EJ4m1s7bG/?spm_id_from=333.1391.0.0&vd_source=c929e07d3af3e6861de93427e4190229][Lecture 01 Advanced Introduction to UNIX]]
 
@@ -15,27 +16,47 @@
 - ~ls~: list
 - ~pwd~: Present Working Directory
 - ~cd~: Change Directory
-- ~touch~
-- ~cat~
+- ~touch~: create a new empty file. Actually, it is used to update the
+  timestamp of a file, but did not change the content. It is just like *touch*. 
+- ~cat~: conCATenate. 
 - ~head~
-- ~man~
+- ~man~: MANunal
 - ~tail~
-- ~mv~
-- ~less~
-- ~grep~
-- ~|~
-- ~sed~
-  use regexp in ''
+- ~mv~: MoVe
+- ~less~: LESS limited compared to ~more~
+- ~grep~: Global Regular Expression Print. 
+- ~|~: deliver some arguments. 
+- ~sed~: Stream EDitor. ~sed 's/old/new/' file.txt~
 - ~curl~: get the context of website. ~curl https://google.com > website.html~
 
   
 *** define a command
 
+**** arguments
+
+#+begin_src shell
+  num=123
+
+  echo $num
+#+end_src
+
+#+RESULTS:
+: 123
+
 $?
+**** function
+#+begin_src shell 
+  func() {
+      ...
+  }
+#+end_src
+**** others
 
-func() {}
-
-&& 
+- $n(1,2,3...): represent the argument delivered in from the terminal.
+- $$: PID
+- $0: is the current path.
+- $#: the amount of argument
+- $@: all the arguments, and every arguments is a string.
 
 *** shell script
 
@@ -55,12 +76,18 @@ func() {}
           echo "negative"
           exit 1
       fi
-      
+
+      if [ "$N" -eq 0]; then
+          echo 0
+      elif [ "$N" -eq 1 ]; then
+          echo 1
+      else
+          echo $(( $(fib $((N-2))) + $(fib $((N-1))) ))
+      fi
   }
 
   fib "$1"
 #+end_src
-fi
 
 ** History and Core Concepts
 :PROPERTIES:
@@ -98,3 +125,28 @@ no obtain for free, but free to access the source code.
 
 
 For example, MIT License, GNU Public license. 
+
+
+*  [[https://www.bilibili.com/video/BV1pu4m1N7Yw?spm_id_from=333.788.recommend_more_video.2&vd_source=c929e07d3af3e6861de93427e4190229][Lecture 02 Packages]]
+
+** Outline
+#+DOWNLOADED: screenshot @ 2025-07-09 14:22:04
+
+
+:PROPERTIES:
+:ID:       19a2eb70-e00d-4e57-aa83-a92401b7eb16
+:END:
+how to install a software???
+
+
+[[file:img/2025-07-09_14-22-04_screenshot.png]]
+
+If we use naive way, we need to download dependence ourselves, and have to compile ourselves.
+
+You might notice that the *apt-get* work the same as *apt*, but accutaully
+*apt* contains many old funcitons, such as *apt-get*, *apt-cache* and so on.
+
+Everything will installed in the ~/var/cache/apt/archives~
+
+For *Apps* way, app is isolated and well-sand-boxing, which means it can
+not share dependecies.
