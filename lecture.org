@@ -149,4 +149,4 @@ You might notice that the *apt-get* work the same as *apt*, but accutaully
 Everything will installed in the ~/var/cache/apt/archives~
 
 For *Apps* way, app is isolated and well-sand-boxing, which means it can
-not share dependecies.
+not share dependencies.
